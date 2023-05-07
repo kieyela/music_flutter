@@ -6,22 +6,12 @@ import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
 
 import 'all-music.dart';
-import 'model.dart';
+import 'model/model.dart';
 import 'dart:html' as html;
 
 
 class Search extends StatefulWidget {
-  static Future<List<Album>> fetchMusic() async {
-    var response = await http.get(
-        Uri.parse('https://api.jamendo.com/v3.0/tracks/?client_id=f8a2ed1b'));
-    if (response.statusCode == 200) {
-      var map = jsonDecode(response.body)['results'];
-      return (map as List).map((e) => Album.fromJson(e)).toList();
-    } else {
-      throw Exception('Erreur album');
-    }
-  }
-
+  
   @override
   State<Search> createState() => _SearchState();
 }
@@ -85,7 +75,7 @@ class _SearchState extends State<Search> {
             filterMusic(value);
           },
           decoration: InputDecoration(
-            hintText: "Rechercher",
+            hintText: "recherche un titre",
             hintStyle: TextStyle(color: Colors.grey),
             border: InputBorder.none,
           ),
@@ -142,6 +132,7 @@ class _SearchState extends State<Search> {
               },
             ),
           ),
+          // ...
         ],
       ),
     );

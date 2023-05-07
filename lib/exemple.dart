@@ -13,18 +13,18 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   List<Album> lisbum = [];
-  static Future<List<Album>> fetchMusic() async {
-    var response = await http.get(
-        Uri.parse('https://api.jamendo.com/v3.0/tracks/?client_id=f8a2ed1b'));
-    if (response.statusCode == 200) {
-      var map = jsonDecode(response.body)['results'];
-      return (map as List).map((e) => Album.fromJson(e)).toList();
-    } else {
-      throw Exception('Erreur album');
-    }
-  }
+  // static Future<List<Album>> fetchMusic() async {
+  //   var response = await http.get(
+  //       Uri.parse('https://api.jamendo.com/v3.0/tracks/?client_id=f8a2ed1b'));
+  //   if (response.statusCode == 200) {
+  //     var map = jsonDecode(response.body)['results'];
+  //     return (map as List).map((e) => Album.fromJson(e)).toList();
+  //   } else {
+  //     throw Exception('Erreur album');
+  //   }
+  // }
   void initState(){
-    fetchMusic();
+   // fetchMusic();
     super.initState();
 
   }
